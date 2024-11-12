@@ -118,7 +118,7 @@ class Game:
             "bravery_token": 1,
             "guardian_angel": 1,
         }
-        #Power Ups
+        #Power Ups items 
         self.available_items = list(self.items.keys())
 
     def choose_character(self):
@@ -169,7 +169,7 @@ class Game:
                     self.items[item_name] -= 1
             else:
                 print("Invalid or unavailable item.")
-        return True  # Character can fight
+        return True  # item has or has not worked
 
     def reward_item(self):
         item = random.choice(self.available_items)
@@ -182,6 +182,7 @@ class Game:
             player_char.attack_character(computer_char)
             if computer_char.is_alive():
                 computer_char.attack_character(player_char)
+    #Item recived
 
         if player_char.is_alive():
             print(f"{player_char.name} wins!")
@@ -190,7 +191,7 @@ class Game:
         else:
             print(f"{computer_char.name} wins!")
             self.wins["computer"] += 1
-            self.reward_item()  # Reward a random item after losing
+            self.reward_item()  # battle/ end of battle
             return computer_char.name
 
     def display_score(self):
@@ -208,7 +209,7 @@ class Game:
 
         overall_winner = "Player" if self.wins["player"] == 5 else "Computer"
         print(f"{overall_winner} wins the game!")
-
+#winner has won 
 if __name__ == "__main__":
     game = Game()
     game.play()
